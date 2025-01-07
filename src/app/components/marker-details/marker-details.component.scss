@@ -1,0 +1,21 @@
+.marker-details-container {
+  min-height: 5rem;
+  padding: 1rem;
+}
+
+.marker-details-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.marker-details-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .spacer {
+    flex-grow: 1;
+  }
+}

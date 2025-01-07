@@ -1,0 +1,88 @@
+<div class="marker-details-container">
+  @if(data) {
+  <form class="marker-details-form" [formGroup]="markerForm">
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input
+        matInput
+        formControlName="name"
+        placeholder="Inserisci il nome"
+        #name
+      />
+      <mat-error> Il nome è obbligatorio </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Proprietario</mat-label>
+      <mat-select
+        formControlName="holder"
+        placeholder="Seleziona il proprietario"
+      >
+        <mat-option *ngFor="let holder of holders()" [value]="holder">
+          {{ holder }}
+        </mat-option>
+      </mat-select>
+      <mat-error> Il proprietario è obbligatorio </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Popolazione</mat-label>
+      <input
+        matInput
+        formControlName="population"
+        placeholder="Inserisci la popolazione"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Capo</mat-label>
+      <input
+        matInput
+        formControlName="chief"
+        placeholder="Inserisci il nome del capo"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Note</mat-label>
+      <textarea
+        matInput
+        formControlName="extendedInfo"
+        placeholder="Aggiungi ulteriori informazioni"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Locanda 1</mat-label>
+      <input
+        matInput
+        formControlName="inn1"
+        placeholder="Inserisci il nome della locanda 1"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Locanda 2</mat-label>
+      <input
+        matInput
+        formControlName="inn2"
+        placeholder="Inserisci il nome della locanda 2"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Locanda 3</mat-label>
+      <input
+        matInput
+        formControlName="inn3"
+        placeholder="Inserisci il nome della locanda 3"
+      />
+    </mat-form-field>
+  </form>
+  } @else {
+  <div>Seleziona un marker per visualizzarne i dettagli</div>
+  }
+</div>
+<div class="marker-details-actions">
+  <button mat-button (click)="deleteMarker()">Elimina</button>
+  <span class="spacer"></span>
+  @if(isReadonly) {
+  <button mat-button (click)="setReadonlyState(false)">Modifica</button>
+  } @else {
+  <button mat-button (click)="save()">Salva</button>
+  }
+  <button mat-button (click)="close()">Chiudi</button>
+</div>

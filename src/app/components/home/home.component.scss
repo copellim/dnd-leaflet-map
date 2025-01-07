@@ -1,0 +1,42 @@
+@use "../../../breakpoints" as *;
+
+.edit-mode-container {
+  display: flex;
+  justify-content: center;
+  width: 140px;
+  position: fixed;
+  bottom: 2rem;
+  right: 0rem;
+  z-index: 400;
+}
+
+.editing {
+  width: 100vw;
+
+  button {
+    width: 90vw;
+  }
+}
+
+.edit-mode-warning {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #f44336;
+  color: white;
+  padding: 1rem 3rem;
+  text-align: left;
+  z-index: 300;
+
+  .edit-mode-warning-header {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+
+    @include respond-to($breakpoint-md) {
+      text-align: left;
+      margin-left: 1rem;
+    }
+  }
+}

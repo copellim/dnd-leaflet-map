@@ -1,0 +1,23 @@
+{
+  "holders": [
+    { "holderName": "Bernardino dei Franceschi", "holderColor": "#007FFF" },
+    { "holderName": "Canossa", "holderColor": "#FFFF00" },
+    { "holderName": "Diocesi Parma", "holderColor": "#EE82EE" },
+    { "holderName": "Diocesi Piacenza", "holderColor": "#FFA500" },
+    { "holderName": "Este", "holderColor": "#0000FF" },
+    { "holderName": "Malaspina", "holderColor": "#FF0000" },
+    { "holderName": "Pallavicino", "holderColor": "#008000" },
+    { "holderName": "Unset", "holderColor": "#000000" }
+  ],
+  "holdings": {
+    "8d641ded-1658-4e64-b38a-8bdc3aec994a": {
+      "name": "Polesine",
+      "latitude": 833,
+      "longitude": 431,
+      "population": 200,
+      "extendedInfo": "La casa madre della Squadra Speciale Fede Polesine",
+      "chief": "Tancredi",
+      "holder": "Pallavicino"
+    }
+  }
+}

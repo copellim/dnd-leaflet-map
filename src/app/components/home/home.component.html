@@ -1,0 +1,23 @@
+<app-map
+  [editModeEnabled]="editModeEnabled()"
+  (markerSelected)="onMarkerSelected($event)"
+/>
+<div class="edit-mode-container" [ngClass]="{ editing: editModeEnabled() }">
+  @if(!editModeEnabled()){
+  <button mat-fab (click)="enableEditMode()">
+    <mat-icon>add</mat-icon>
+  </button>
+  } @else{
+  <button mat-fab extended (click)="disableEditMode()">
+    <mat-icon>done</mat-icon>
+    <span>Clicca per terminare le modifiche</span>
+  </button>
+  <div class="edit-mode-warning">
+    <p class="edit-mode-warning-header">Modalità modifica abilitata.</p>
+    <ul>
+      <li>Premi su un punto della mappa per aggiungere un marker</li>
+      <li>Sposta un marker trascinandolo</li>
+    </ul>
+  </div>
+  }
+</div>
