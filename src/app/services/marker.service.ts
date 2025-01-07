@@ -12,6 +12,8 @@ export class MarkerService {
   private holdersRef = ref(this.db, 'holders');
   private holdingsRef = ref(this.db, 'holdings');
 
+  private readonly defaultMarkerColor = '#776D5A';
+
   holdings: WritableSignal<MarkerData[]> = signal([]);
   holders: WritableSignal<HolderData[]> = signal([]);
 
@@ -50,28 +52,20 @@ export class MarkerService {
     return builtMarker;
   }
 
-  deleteMarker(marker: MarkerData): void {
-    remove(ref(this.db, 'holdings/' + marker.id));
-    // this.holdings.update((markers) =>
-    //   markers.filter((m) => m.id !== marker.id)
-    // );
-  }
-
   createMarker(marker: MarkerData): void {
     const id = this.createUuid();
-    const { id: _, ...newMarker } = marker;
-    newMarker.markerColor = this.holders().find(
-      (h) => h.name === newMarker.holder
-    )?.color;
+    const newMarker = this.configureMarkerProperties(marker);
     set(ref(this.db, 'holdings/' + id), newMarker);
   }
 
-  updateMarker(updatedMarker: MarkerData): void {
-    const { id, ...newMarker } = updatedMarker;
-    newMarker.markerColor = this.holders().find(
-      (holder) => holder.name === updatedMarker.holder
-    )?.color;
+  updateMarker(marker: MarkerData): void {
+    const id = marker.id;
+    const newMarker = this.configureMarkerProperties(marker);
     set(ref(this.db, 'holdings/' + id), newMarker);
+  }
+
+  deleteMarker(marker: MarkerData): void {
+    remove(ref(this.db, 'holdings/' + marker.id));
   }
 
   buildEmptyMarker(latitude: number, longitude: number): MarkerData {
@@ -135,5 +129,26 @@ export class MarkerService {
       longitude: mapMarker.getLatLng().lng,
     };
     this.updateMarker(updatedMarker);
+  }
+
+  private configureMarkerProperties(marker: MarkerData) {
+    const newMarker = this.removeMarkerId(marker);
+    newMarker.markerColor = this.getMarkerColor(newMarker.holder);
+    return newMarker;
+  }
+
+  private removeMarkerId(marker: MarkerData): MarkerData {
+    const { id, ...strippedMarker } = marker;
+    return strippedMarker;
+  }
+
+  private getMarkerColor(holder: string | undefined): string {
+    if (!holder) {
+      return this.defaultMarkerColor;
+    }
+    return (
+      this.holders().find((h) => h.name === holder)?.color ||
+      this.defaultMarkerColor
+    );
   }
 }

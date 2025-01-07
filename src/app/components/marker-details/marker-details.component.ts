@@ -97,10 +97,6 @@ export class MarkerDetailsComponent implements AfterViewInit {
       this.markerForm.get('name')?.setErrors({ required: true });
       return;
     }
-    if (this.isHolderUnset()) {
-      this.markerForm.get('holder')?.setErrors({ required: true });
-      return;
-    }
     if (this.data.id === undefined) {
       this.markerService.createMarker(this.markerForm.value);
     } else {
@@ -123,9 +119,5 @@ export class MarkerDetailsComponent implements AfterViewInit {
       this.markerForm.get('name')?.value === '' ||
       this.markerForm.get('name')?.value === null
     );
-  }
-
-  private isHolderUnset() {
-    return this.markerForm.get('holder')?.value === '';
   }
 }
