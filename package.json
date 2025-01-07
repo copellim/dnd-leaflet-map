@@ -5,9 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration=production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "start-emulators": "firebase emulators:start"
+    "firebase:emulators": "firebase emulators:start",
+    "firebase:deploy": "firebase deploy --only hosting"
   },
   "private": true,
   "dependencies": {
