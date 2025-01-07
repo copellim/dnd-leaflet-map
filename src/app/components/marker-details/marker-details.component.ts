@@ -105,6 +105,9 @@ export class MarkerDetailsComponent implements AfterViewInit {
   }
 
   deleteMarker() {
+    if (!confirm('Sicuro sicuro sicuro?')) {
+      return;
+    }
     this.markerService.deleteMarker(this.data);
     this.close();
   }
