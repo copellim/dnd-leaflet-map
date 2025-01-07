@@ -1,3 +1,19 @@
+@use "@angular/material" as mat;
+
+:host(app-marker-details) {
+  @include mat.form-field-overrides(
+    (
+      outlined-disabled-input-text-color: black,
+      select-disabled-option-text-color: black,
+    )
+  );
+  @include mat.select-overrides(
+    (
+      disabled-trigger-text-color: black,
+    )
+  );
+}
+
 .marker-details-container {
   min-height: 5rem;
   padding: 1rem;
