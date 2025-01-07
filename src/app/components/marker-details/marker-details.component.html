@@ -3,16 +3,18 @@
   <form class="marker-details-form" [formGroup]="markerForm">
     <mat-form-field>
       <mat-label>Nome</mat-label>
+
       <input
         matInput
         formControlName="name"
         placeholder="Inserisci il nome"
         #name
+        required="true"
       />
       <mat-error> Il nome è obbligatorio </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Proprietario</mat-label>
+      <mat-label>Casata</mat-label>
       <mat-select
         formControlName="holder"
         placeholder="Seleziona il proprietario"
@@ -21,7 +23,6 @@
           {{ holder }}
         </mat-option>
       </mat-select>
-      <mat-error> Il proprietario è obbligatorio </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Popolazione</mat-label>
@@ -39,14 +40,7 @@
         placeholder="Inserisci il nome del capo"
       />
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Note</mat-label>
-      <textarea
-        matInput
-        formControlName="extendedInfo"
-        placeholder="Aggiungi ulteriori informazioni"
-      ></textarea>
-    </mat-form-field>
+
     <mat-form-field>
       <mat-label>Locanda 1</mat-label>
       <input
@@ -70,6 +64,14 @@
         formControlName="inn3"
         placeholder="Inserisci il nome della locanda 3"
       />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Note</mat-label>
+      <textarea
+        matInput
+        formControlName="extendedInfo"
+        placeholder="Aggiungi ulteriori informazioni"
+      ></textarea>
     </mat-form-field>
   </form>
   } @else {

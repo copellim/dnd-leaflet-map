@@ -68,14 +68,13 @@ export class MarkerDetailsComponent implements AfterViewInit {
       inn1: [],
       inn2: [],
       inn3: [],
-      holder: [],
+      holder: [null],
       markerColor: [],
     });
 
     if (this.data) {
       console.log(this.data);
       this.markerForm.patchValue(this.data);
-      this.markerForm.get('holder')?.setValue(this.data.holder);
     }
   }
   ngAfterViewInit(): void {

@@ -100,8 +100,6 @@ export class MarkerService {
       const markers: MarkerData[] = Object.keys(holdings).map((key) => ({
         id: key,
         ...holdings[key],
-        markerColor: this.holders().find((h) => h.name === holdings[key].holder)
-          ?.color,
       }));
       this.holdings.set(markers);
     });
